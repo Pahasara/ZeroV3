@@ -24,10 +24,10 @@ While the core features are under development, here are some additional function
 
 Contributions to Zero v3 are highly encouraged! Whether you're interested in fixing bugs, adding new features, or improving documentation, there's a place for you in this project.
 
-1. **Familiarize Yourself**: Get acquainted with the project by exploring the codebase and documentation.
+1. **Familiarize Yourself**: Get acquainted with the project by exploring the codebase.
 2. **Pick an Issue**: Check out the list of open issues or suggest your own enhancements.
 3. **Submit a Pull Request**: Implement your changes and submit a pull request for review.
-4. **Join the Discussion**: Engage with other contributors and maintainers in discussions related to the project.
+4. **Join the Discussion**: Engage in discussions related to the project.
 
 ## Roadmap
 
