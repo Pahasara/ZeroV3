@@ -35,4 +35,4 @@ Stay updated on the progress of Zero v3 by referring to our roadmap. Here's a gl
 
 - **APRIL, 2024**: Database integration and CRUD operations.
 - **MAY, 2024**: UI enhancements and initial feature rollout.
-- **MAY, 2024**: Finalizing additional features and preparing for release.
+- **JUNE, 2024**: Finalizing additional features and preparing for release.
