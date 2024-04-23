@@ -1,6 +1,6 @@
 # ZERO v3
 
-Welcome to ZERO v3, the next evolution of the Zero TVSM project! Building upon the foundations laid by its predecessors (v1.0 & v2.0), this version aims to completely revamp the Zero TVSM application with WPF and SQLite.
+Welcome to ZERO v3, the next evolution of the Zero TVSM project! Building upon the foundations laid by its predecessors (v1.0 & v2.0), this version aims to completely revamp the Zero TVSM application with Avalonia UI and SQLite.
 
 Your ideas and contributions are invaluable to the development of this project. Whether you're a seasoned developer or a newcomer, your input can help shape the future of Zero TVSM.
 
