@@ -1,14 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\",
+  "WorkspaceRootPath": "C:\\Users\\Pahasara\\OneDrive\\Documents\\GitHub\\ZeroV3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{83D6F49E-0C7C-4B48-9A5A-00138E9006F8}|ZeroV3\\ZeroV3.csproj|c:\\users\\pahasara\\onedrive\\documents\\visual studio 2022\\projects\\zerov3\\zerov3\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{83D6F49E-0C7C-4B48-9A5A-00138E9006F8}|ZeroV3\\ZeroV3.csproj|solutionrelative:zerov3\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83D6F49E-0C7C-4B48-9A5A-00138E9006F8}|ZeroV3\\ZeroV3.csproj|c:\\users\\pahasara\\onedrive\\documents\\visual studio 2022\\projects\\zerov3\\zerov3\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{83D6F49E-0C7C-4B48-9A5A-00138E9006F8}|ZeroV3\\ZeroV3.csproj|solutionrelative:zerov3\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,25 +31,23 @@
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "ZeroV3\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\..\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml",
-              "RelativeToolTip": "ZeroV3\\MainWindow.xaml",
+              "RelativeToolTip": "..\\..\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-21T15:24:37.4Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-21T15:24:37.4Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "ZeroV3\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\Pahasara\\OneDrive\\Documents\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml.cs",
-              "RelativeToolTip": "ZeroV3\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\..\\Visual Studio 2022\\Projects\\ZeroV3\\ZeroV3\\MainWindow.xaml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T15:24:36.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-21T15:24:36.036Z"
             }
           ]
         }
