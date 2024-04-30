@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace UI
 {
@@ -7,6 +8,16 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void btnSearch_OnClick(object sender, RoutedEventArgs args)
+        {
+            
+        }
+
+        public void btnSearch_Released(object sender, RoutedEventArgs args)
+        {
+            
         }
     }
 }
