@@ -33,6 +33,6 @@ Contributions to Zero v3 are highly encouraged! Whether you're interested in fix
 
 Stay updated on the progress of Zero v3 by referring to our roadmap. Here's a glimpse of what's to come:
 
-- **APRIL, 2024**: Database integration and CRUD operations.
-- **MAY, 2024**: UI enhancements and initial feature rollout.
-- **MAY, 2024**: Finalizing additional features and preparing for release.
+- **APRIL, 2024**: Database integration and CRUD operations. (Done)
+- **MAY, 2024**: UI enhancements and initial feature rollout. (Done)
+- **MAY, 2024**: Finalizing additional features and preparing for release. (For now, I'm just too lazy to connect the functionality and UI elements. So, if any of u willing to do the job, I highly encourage. U can view [Zero](https://github.com/Pahasara/Zero) source code for get an understand of the software, and new source files of ZeroV3 are more readable than them.(Haha, I guess so. Still trying to figure out high quality coding,,,,) If anything unclear, lemme know.
