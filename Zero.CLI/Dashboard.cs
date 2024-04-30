@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Zero.Core
+﻿namespace Zero.CLI
 {
     public class Dashboard
     {
@@ -20,10 +18,10 @@ namespace Zero.Core
             Console.WriteLine("4. Update a show");
             Console.WriteLine("5. Navigate through db");
             Console.WriteLine();
+
             Console.Write("Enter your choice: ");
             choice = Console.ReadLine();
             Console.WriteLine();
-
             SelectChoice(choice);
         }
 
@@ -49,7 +47,7 @@ namespace Zero.Core
                     choice = Console.ReadLine();
                     break;
                 case "5":
-                    Navigation navigation = new Navigation();
+                    NavigationCLI navigation = new NavigationCLI();
                     navigation.ShowMenu();
                     break;
                 default:
