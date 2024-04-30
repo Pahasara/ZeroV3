@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 
 namespace Zero.Core
 {
@@ -8,54 +7,26 @@ namespace Zero.Core
         SQLiteConnection conn = new SQLiteConnection("Data Source = database.db; version = 3; New = True; Compress = True;");
         Database database = new Database();
         
-        private static int currentRow = 0, maxRow = 0;
-        private static string index;
+        public int currentRow = 0, maxRow = 0;
+        private string  index, show, current, total, rating;
 
-        private string choice = "n", show, current, total, rating;
-
-        public Navigation()
+        public void Navigate(bool choice)
         {
-            try
-            {
-                conn.Open();
-                
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void Navigate()
-        {
-            if (choice == "n")
+            if (choice == true)
             {
                 NextShow();
             }
-            else
+            else if (choice == false)
             {
                 PreviousShow();
             }
 
-            Refresh(); // Fetch new data columns
-            ShowData();
+            Fetch(); // Fetch new data columns
         }
 
-        private void ShowData()
-        {   
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine($"          {index}");
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine($"SHOW: {show}");
-            Console.WriteLine($"Progress: {current}");
-            Console.WriteLine($"Total: {total}");
-            Console.WriteLine($"Rating: {rating}");
-            Console.WriteLine("----------------------------------------------------");
-        }
-
-        private void Refresh()
+        private void Fetch()
         {
+            conn.Open();
             maxRow = database.GetNumberOfRows(conn);
             string[] indexes = database.GetIndexArray(conn);
             string[] data = database.Search(conn, indexes[currentRow]);
@@ -67,33 +38,49 @@ namespace Zero.Core
             rating = data[4];
         }
 
-        public void ShowMenu()
+        public int NextShow()
         {
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("                Navigation Manager");
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine("Type 'next' / 'n' for next show.");
-            Console.WriteLine("Type 'back' / 'b' for previous show.");
-            Console.Write("Enter your choice: ");
-            choice = Console.ReadLine();
-            Navigate();
-        }
-
-        public void NextShow()
-        {
-            if (currentRow < maxRow)
+            if (currentRow < (maxRow - 1))
             {
                 currentRow++;
+                return 0;
             }
+            return -1;
         }
 
-        public void PreviousShow()
+        public int PreviousShow()
         {
-            if (currentRow > 1)
+            if (currentRow > 0)
             {
                 currentRow--;
+                return 0;
             }
+            return -1;
+        }
+
+        public string GetIndex()
+        {
+            return index;
+        }
+
+        public string GetShow()
+        {
+            return show;
+        }
+
+        public string GetCurrent()
+        {
+            return current;
+        }
+
+        public string GetTotal()
+        {
+            return total;
+        }
+
+        public string GetRating()
+        {
+            return rating;
         }
     }
 }
