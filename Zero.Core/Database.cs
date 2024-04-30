@@ -110,7 +110,7 @@ namespace Zero.Core
             SQLiteCommand cmd;
             conn.Open();
             cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {table} WHERE id = {index};";
+            cmd.CommandText = $"SELECT * FROM {table} WHERE id = '{index}';";
 
             string[] column = new string[5];
 
