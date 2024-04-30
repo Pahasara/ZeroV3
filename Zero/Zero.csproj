@@ -7,6 +7,24 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Assets\Fonts\Orbitron.ttf" />
+    <None Remove="Assets\Fonts\RussoOne.ttf" />
+    <None Remove="Assets\Images\btnAdd_default.png" />
+    <None Remove="Assets\Images\btnBack_default.png" />
+    <None Remove="Assets\Images\btnCancel_default.png" />
+    <None Remove="Assets\Images\btnDelete_default.png" />
+    <None Remove="Assets\Images\btnForward_default.png" />
+    <None Remove="Assets\Images\btnNext_default.png" />
+    <None Remove="Assets\Images\btnRefresh_default.png" />
+    <None Remove="Assets\Images\btnReset_default.png" />
+    <None Remove="Assets\Images\btnSave_default.png" />
+    <None Remove="Assets\Images\btnSearch_default.png" />
+    <None Remove="Assets\Images\btnStar_default.png" />
+    <None Remove="Assets\Images\btnStar_hover.png" />
+    <None Remove="Assets\Images\btnUpdate_default.png" />
+    <None Remove="CustomStyles.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.10" />
@@ -15,5 +33,13 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Include="CustomStyles.xaml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 </Project>
