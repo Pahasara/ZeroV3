@@ -6,8 +6,9 @@
         WindowStartupLocation="CenterScreen"
         x:Class="UI.MainWindow"
         Icon="/Assets/icon.ico"
-        Title="ZERO V3"
-        SizeToContent="WidthAndHeight">
+        Title="DvNET ZERO V3"
+        SizeToContent="WidthAndHeight"
+        CanResize="False">
   <Window.Styles>
       <StyleInclude Source="/CustomStyles.xaml" />
   </Window.Styles>
@@ -19,46 +20,46 @@
             RowDefinitions="Auto, Auto, Auto, Auto">
 
         <Label Grid.Row="0" Grid.Column="0" Content="Index" Margin="10"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Name="txtIndex" Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtIndex" Margin="5"/>
         
         <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="5"
               ColumnDefinitions="Auto,Auto,Auto, Auto, Auto, Auto">
-        <Button Grid.Row="0" Grid.Column="0" Name="btnSearch" Click="btnSearch_OnClick" Margin="5">
+        <Button Grid.Row="0" Grid.Column="0" x:Name="btnSearch" Click="btnSearch_OnClick" Margin="5">
           <Panel>
-            <Image Name="imgSearch" Source="/Assets/Images/btnSearch_default.png" Width="20"/>
+            <Image x:Name="imgSearch" Source="/Assets/Images/btnSearch_default.png" Width="20"/>
           </Panel>
         </Button>
         
         <Grid Grid.Column="1"
               ColumnDefinitions="Auto,Auto,Auto,Auto,Auto">
-          <Button Name="btnStar1" Grid.Column="0">
+          <Button x:Name="btnStar1" Grid.Column="0">
             <Image Source="/Assets/Images/btnStar_default.png" Width="15"></Image>
           </Button>
-          <Button Name="btnStar2" Grid.Column="1">
+          <Button x:Name="btnStar2" Grid.Column="1">
             <Image Source="/Assets/Images/btnStar_default.png" Width="15"></Image>
           </Button>
-          <Button Name="btnStar3" Grid.Column="2">
+          <Button x:Name="btnStar3" Grid.Column="2">
             <Image Source="/Assets/Images/btnStar_default.png" Width="15"></Image>
           </Button>
-          <Button Name="btnStar4" Grid.Column="3">
+          <Button x:Name="btnStar4" Grid.Column="3">
             <Image Source="/Assets/Images/btnStar_default.png" Width="15"></Image>
           </Button>
-          <Button Name="btnStar5" Grid.Column="4">
+          <Button x:Name="btnStar5" Grid.Column="4">
             <Image Source="/Assets/Images/btnStar_default.png" Width="15"></Image>
           </Button>
           </Grid>
         </Grid>
           
         <Label Grid.Column="0" Grid.Row="1" Content="TV Show" Margin="10"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="txtShow" Margin="5" Width="305" Grid.ColumnSpan="4"/>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtShow" Margin="5" Width="305" Grid.ColumnSpan="4"/>
         
         <Label Grid.Column="0" Grid.Row="2" Content="Episodes" Margin="10"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="txtCurrent" Margin="5" TextAlignment="Center" />
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="txtCurrent" Margin="5" TextAlignment="Center" />
         
         <Label Grid.Column="2" Grid.Row="2" Content="Watched" Margin="15 10 5 0"/>
-        <TextBox Grid.Column="3" Grid.Row="2" Name="txt" Margin="5" TextAlignment="Center"/>
-        <Button Grid.Row="2" Grid.Column="4" Name="btnForward" Margin="0 5" Width="35">
-            <Image Name="imgForward" Source="/Assets/Images/btnForward_default.png"/>
+        <TextBox Grid.Column="3" Grid.Row="2" x:Name="txt" Margin="5" TextAlignment="Center"/>
+        <Button Grid.Row="2" Grid.Column="4" x:Name="btnForward" Margin="0 5" Width="35">
+            <Image x:Name="imgForward" Source="/Assets/Images/btnForward_default.png"/>
         </Button>
 
         <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Foreground="#F00000" Value="50" Margin="0 15 0 0"></ProgressBar>
@@ -70,28 +71,28 @@
       <Border Grid.Row="0" Grid.Column="0" Margin="10" CornerRadius="10" Background="#121212">
         <Grid Margin="5"
               ColumnDefinitions="60, 60, 60, 60">
-        <Button Grid.Row="0" Grid.Column="0" Name="btnDelete" Margin="10 0">
-          <Image Name="imgDelete" Source="/Assets/Images/btnDelete_default.png" Width="28"/>
+        <Button Grid.Row="0" Grid.Column="0" x:Name="btnDelete" Margin="10 0">
+          <Image x:Name="imgDelete" Source="/Assets/Images/btnDelete_default.png" Width="28"/>
         </Button>
-        <Button Grid.Row="0" Grid.Column="1" Name="btnReset">
-          <Image Name="imgReset" Source="/Assets/Images/btnReset_default.png" Width="28"/>
+        <Button Grid.Row="0" Grid.Column="1" x:Name="btnReset">
+          <Image x:Name="imgReset" Source="/Assets/Images/btnReset_default.png" Width="28"/>
         </Button>
-        <Button Grid.Row="0" Grid.Column="2" Name="btnUpdate">
-          <Image Name="imgUpdate" Source="/Assets/Images/btnUpdate_default.png" Width="28"/>
+        <Button Grid.Row="0" Grid.Column="2" x:Name="btnUpdate">
+          <Image x:Name="imgUpdate" Source="/Assets/Images/btnUpdate_default.png" Width="28"/>
         </Button>
-        <Button Grid.Row="0" Grid.Column="3" Name="btnAdd" Margin="0 0 10 0">
-          <Image Name="imgAdd" Source="/Assets/Images/btnAdd_default.png" Width="28"/>
+        <Button Grid.Row="0" Grid.Column="3" x:Name="btnAdd" Margin="0 0 10 0">
+          <Image x:Name="imgAdd" Source="/Assets/Images/btnAdd_default.png" Width="28"/>
         </Button>
       </Grid>
       </Border>
       
       <Border Grid.Row="0" Grid.Column="1" Margin="10" CornerRadius="10" Background="#121212">
         <Grid Margin="5" ColumnDefinitions="Auto, Auto" RowDefinitions="Auto">
-          <Button Grid.Row="0" Grid.Column="0" Name="btnBack" Margin="15 0 10 0">
-          <Image Name="imgBack" Source="/Assets/Images/btnBack_default.png" Width="25"/>
+          <Button Grid.Row="0" Grid.Column="0" x:Name="btnBack" Margin="15 0 10 0">
+          <Image x:Name="imgBack" Source="/Assets/Images/btnBack_default.png" Width="25"/>
           </Button>
-          <Button Grid.Row="0" Grid.Column="1" Name="btnNext" Margin="5 0">
-          <Image Name="imgNext" Source="/Assets/Images/btnNext_default.png" Width="25"/>
+          <Button Grid.Row="0" Grid.Column="1" x:Name="btnNext" Margin="5 0">
+          <Image x:Name="imgNext" Source="/Assets/Images/btnNext_default.png" Width="25"/>
         </Button>
       </Grid>
       </Border>
@@ -103,9 +104,9 @@
     <Border Margin="0 0 0 0" Background="#121212">
         <Grid Margin="5"
               ColumnDefinitions="190, Auto, 200">
-          <Label Name="lblProgress" Classes="Status" Grid.Column="0" Margin="10 0" Content="Progress |  0%" HorizontalAlignment="Left"></Label>
-          <Label Name="lblCount" Classes="Status" Grid.Column="1" Margin="0" Content="1 / 2" HorizontalAlignment="Center"></Label>
-          <Label Name="lblCompany" Classes="Status" Grid.Column="2" Margin="0" Content="DvNET SYSTEMS" HorizontalAlignment="Right"></Label>
+          <Label x:Name="lblProgress" Classes="Status" Grid.Column="0" Margin="10 0" Content="Progress |  0%" HorizontalAlignment="Left"></Label>
+          <Label x:Name="lblCount" Classes="Status" Grid.Column="1" Margin="0" Content="1 / 2" HorizontalAlignment="Center"></Label>
+          <Label x:Name="lblCompany" Classes="Status" Grid.Column="2" Margin="0" Content="DvNET SYSTEMS" HorizontalAlignment="Right"></Label>
       </Grid>
   </Border>
   </StackPanel>
