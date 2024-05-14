@@ -5,6 +5,7 @@ namespace Zero.CLI
     public class NavigationCLI
     {
         Navigation navi = new Navigation();
+        Database db = new Database();
         private string choice = "";
 
         public void ShowMenu()
@@ -23,15 +24,22 @@ namespace Zero.CLI
         {
             do
             {
-                bool isNext = false;
                 Console.WriteLine();
                 Console.Write("Navigate: ");
                 choice = Console.ReadLine();
-                if (choice == "n")
+                if (choice == "++")
                 {
-                    isNext = true;
+                    navi.Forward();
+                    navi.Navigate();
                 }
-                navi.Navigate(isNext);
+                else if (choice == "n")
+                {
+                    navi.Navigate("next");
+                }
+                else if (choice == "b")
+                {
+                    navi.Navigate("back");
+                }
                 ShowData();
             }
             while (choice != "");

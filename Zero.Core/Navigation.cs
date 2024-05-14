@@ -10,13 +10,13 @@ namespace Zero.Core
         public int currentRow = 0, maxRow = 0;
         private string  index, show, current, total, rating;
 
-        public void Navigate(bool choice)
+        public void Navigate(string choice="")
         {
-            if (choice == true)
+            if (choice == "next")
             {
                 NextShow();
             }
-            else if (choice == false)
+            else if (choice == "back")
             {
                 PreviousShow();
             }
@@ -56,6 +56,13 @@ namespace Zero.Core
                 return 0;
             }
             return -1;
+        }
+
+        public void Forward()
+        {
+            int currentEpisode = Arithmetic.ParseInt(GetCurrent());
+            currentEpisode++;
+            database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
         public string GetIndex()
