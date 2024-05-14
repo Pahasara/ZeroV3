@@ -12,11 +12,11 @@
             Console.WriteLine("                " +  app);
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("1. Search a show");
+            Console.WriteLine("1. Navigate through db");
             Console.WriteLine("2. Add a new show");
-            Console.WriteLine("3. Delete a show");
+            Console.WriteLine("3. Search a show");
             Console.WriteLine("4. Update a show");
-            Console.WriteLine("5. Navigate through db");
+            Console.WriteLine("5. Delete a show");
             Console.WriteLine();
 
             Console.Write("Enter your choice: ");
@@ -30,25 +30,26 @@
             switch (choice)
             {
                 case "1":
-                    Console.Write("Enter the index to search: ");
-                    choice = Console.ReadLine();
+                    NavigationCLI navigation = new NavigationCLI();
+                    navigation.ShowMenu();
                     break;
+                    
                 case "2":
                     //.......................
                     break;
                 case "3":
-                    Console.Write("Enter the index to delete: ");
-                    //.......................
+                    Console.Write("Enter the index to search: ");
                     choice = Console.ReadLine();
-                    break;
+                    break; 
                 case "4":
                     Console.Write("Enter the index to update: ");
                     //.......................
                     choice = Console.ReadLine();
                     break;
                 case "5":
-                    NavigationCLI navigation = new NavigationCLI();
-                    navigation.ShowMenu();
+                    Console.Write("Enter the index to delete: ");
+                    //.......................
+                    choice = Console.ReadLine();
                     break;
                 default:
                     Console.WriteLine("Choice is not valid!");

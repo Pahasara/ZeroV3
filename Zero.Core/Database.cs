@@ -7,28 +7,14 @@ namespace Zero.Core
         // define default table name
         private string table = "ShowInfo";
 
-        public static SQLiteConnection Connection()
-        {
-            SQLiteConnection conn;
-            conn = new SQLiteConnection("Data Source = database.db; version = 3; New = True; Compress = True;");
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return conn;
-        }
-
         public void ExecuteSQL(SQLiteConnection conn, string command)
         {
+            conn.Open();
             SQLiteCommand cmd;
             cmd = conn.CreateCommand();
             cmd.CommandText = command;
             cmd.ExecuteNonQuery();
-
+            conn.Close();
         }
 
         public void CreateTable(SQLiteConnection conn)
@@ -49,7 +35,7 @@ namespace Zero.Core
         {
             ExecuteSQL(conn, 
                 $"UPDATE {table} " +
-                $"SET id='{index}', show='{show}', current={current}, total={total}, rating={rating}" +
+                $"SET id='{index}', show='{show}', current={current}, total={total}, rating={rating} " +
                 $"WHERE id='{index}';");
         }
 
