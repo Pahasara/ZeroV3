@@ -65,6 +65,29 @@ namespace Zero.Core
             database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
+        public void Backward()
+        {
+            int currentEpisode = Arithmetic.ParseInt(GetCurrent());
+            currentEpisode--;
+            database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
+        }
+
+        public void ResetProgress()
+        {
+            int currentEpisode = 0;
+            database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
+        }
+
+        public void FinishProgress()
+        {
+            database.Update(conn, GetIndex(), GetShow(), GetTotal(), GetTotal(), GetRating());
+        }
+
+        public void DeleteShow()
+        {
+            database.Delete(conn, GetIndex());
+        }
+
         public string GetIndex()
         {
             return index;
