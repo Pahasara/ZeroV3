@@ -13,7 +13,7 @@ namespace Zero.CLI
             Console.WriteLine($"                Zero TVSM v{Info.Version}");
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("Type help for for more information.");
-            Console.WriteLine("Enter to exit from navigation manager.");
+            Console.WriteLine("Enter to exit from navigation manager.\n");
             ShowDashboard();
         }
 
@@ -25,7 +25,19 @@ namespace Zero.CLI
                 Console.Write("Command: ");
                 choice = Console.ReadLine();
 
-                if (choice == "help")
+                if (choice == "add")
+                {
+                    navi.AddShow();
+                }
+                else if (choice == "reset")
+                {
+                    navi.ResetProgress();
+                }
+                else if (choice == "del")
+                {
+                    navi.DeleteShow();
+                }
+                else if (choice == "help")
                 {
                     Help.Dashboard();
                 }
