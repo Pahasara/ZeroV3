@@ -72,6 +72,25 @@ namespace Zero.Core
             database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
+        public void AddShow()
+        {
+            NewShow newShow = new NewShow();
+            newShow.ShowMenu();
+            string[] data = newShow.GetData();
+
+            index = data[0];
+            show = data[1];
+            current = data[2];
+            total = data[3];
+            rating = data[4];
+
+            database.Insert(conn, GetIndex(), GetShow(), GetCurrent(), GetTotal(), GetRating());
+            newShow.Complete();
+            currentRow = maxRow;
+            maxRow++;
+            Navigate("next");
+        }
+
         public void ResetProgress()
         {
             int currentEpisode = 0;
@@ -86,6 +105,8 @@ namespace Zero.Core
         public void DeleteShow()
         {
             database.Delete(conn, GetIndex());
+            maxRow--;
+            Navigate("back");
         }
 
         public string GetIndex()
