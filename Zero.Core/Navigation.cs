@@ -10,25 +10,48 @@ namespace Zero.Core
         public int currentRow = 0, maxRow = 0;
         private string  index, show, current, total, rating;
 
-        public void Navigate(string choice="")
-        {
-            if (choice == "next")
+        public Navigation() {
+            try {
+                Fetch();
+            }
+            catch (Exception e)
             {
-                NextShow();
+                conn.Close();
+                InitializeDatabase();
+            }
+        }
+
+        public void InitializeDatabase()
+        {
+            database.CreateTable(conn);
+        }
+
+        public void Navigate(string choice="")
+        {   if (choice == "next")
+            {
+                 NextShow();
             }
             else if (choice == "back")
             {
-                PreviousShow();
+                 PreviousShow();
             }
 
             Fetch(); // Fetch new data columns
         }
 
-        private void Fetch()
+        private void Fetch(string searchIndex="")
         {
             conn.Open();
             maxRow = database.GetNumberOfRows(conn);
             string[] indexes = database.GetIndexArray(conn);
+            if (searchIndex != "")
+            {
+                currentRow = Array.IndexOf(indexes, searchIndex);
+                if (currentRow == -1)
+                {
+                    currentRow = 0;
+                }
+            }
             string[] data = database.Search(conn, indexes[currentRow]);
 
             index = data[0];
@@ -56,6 +79,11 @@ namespace Zero.Core
                 return 0;
             }
             return -1;
+        }
+
+        public int GetMaxRow()
+        {
+            return maxRow;
         }
 
         public void Forward()
@@ -89,6 +117,11 @@ namespace Zero.Core
             currentRow = maxRow;
             maxRow++;
             Navigate("next");
+        }
+
+        public void Search(string index)
+        {
+            Fetch(index);
         }
 
         public void ResetProgress()
