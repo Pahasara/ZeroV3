@@ -12,8 +12,9 @@
             Console.WriteLine("++       Forward progress");
             Console.WriteLine("--       Backward progress");
             Console.WriteLine("+++      Finish progress");
-            Console.WriteLine("r        Reset progress");
+            Console.WriteLine("add      Add a new TVShow");
             Console.WriteLine("del      Delete current TVShow");
+            Console.WriteLine("reset    Reset current progress");
             Console.WriteLine("----------------------------------------------------");
         }
     }
