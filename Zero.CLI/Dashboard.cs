@@ -9,15 +9,15 @@ namespace Zero.CLI
 
         public void ShowMenu()
         {
+            Console.Clear();
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine($"                Zero TVSM v{Info.Version}");
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("Type help for for more information.");
-            Console.WriteLine("Enter to exit from navigation manager.\n");
-            ShowDashboard();
+            Console.WriteLine("Press enter to exit from Zero TVSM.\n");
         }
 
-        private void ShowDashboard()
+        public void ShowDashboard()
         {
             do
             {
@@ -43,11 +43,23 @@ namespace Zero.CLI
                 }
                 else
                 {
-                    Navigate();
+                    TryNavigate();
                 }
             }
             while (choice != "");
-            navi.currentRow = 0;
+        }
+
+        private void TryNavigate()
+        {
+            int maxRow = navi.GetMaxRow();
+            if (maxRow > 0)
+            {
+                Navigate();
+            }
+            else
+            {
+                Console.WriteLine("No TVShow has been saved. Pleas use 'add' command to add new entries.");
+            }
         }
 
         private void Navigate()
@@ -68,6 +80,7 @@ namespace Zero.CLI
             {
                 ChangeProgress();
             }
+            ShowMenu();
             ShowData();
             ShowRowNumber();
         }
@@ -77,20 +90,27 @@ namespace Zero.CLI
             if (choice == "++")
             {
                 navi.Forward();
+                navi.Navigate();
             }
             else if (choice == "--")
             {
                 navi.Backward();
+                navi.Navigate();
             }
             else if (choice == "r")
             {
                 navi.ResetProgress();
+                navi.Navigate();
             }
             else if (choice == "+++")
             {
                 navi.FinishProgress();
+                navi.Navigate();
             }
-            navi.Navigate();
+            else
+            {
+                navi.Search(choice);
+            }
         }
 
         private void ShowData()
@@ -99,9 +119,10 @@ namespace Zero.CLI
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine($"Index   : {navi.GetIndex()}");
             Console.WriteLine($"Show    : {navi.GetShow()}");
-            Console.WriteLine($"Progress: {navi.GetCurrent()}");
-            Console.WriteLine($"Total   : {navi.GetTotal()}");
             Console.WriteLine($"Rating  : {navi.GetRating()}");
+            Console.WriteLine($"Current : {navi.GetCurrent()}");
+            Console.WriteLine($"Total   : {navi.GetTotal()}");
+            Console.WriteLine($"Progress: {navi.GetCurrent()}/{navi.GetTotal()}");
             Console.WriteLine("----------------------------------------------------");
         }
 
