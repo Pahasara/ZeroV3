@@ -2,14 +2,15 @@
 {
     public class Arithmetic
     {
-        public float GetProgress(string value, string tot)
+        public static double GetProgress(string value, string tot)
         {
             Int32.TryParse(value, out int progress);
             Int32.TryParse(tot, out int total);
 
             float percentage = (float)progress / total;
+            double decPercentage = Math.Round((double)percentage, 2) * 100;
 
-            return percentage;
+            return decPercentage;
         }
 
         public static int ParseInt(string str)
