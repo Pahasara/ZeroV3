@@ -4,112 +4,132 @@ namespace Zero.Core
 {
     public class Database
     {
-        // define default table name
+        private string connectionString = "Data Source=.zero.db; Version=3; New=True; Compress=True;";
         private string table = "ShowInfo";
 
-        public void ExecuteSQL(SQLiteConnection conn, string command)
+        private void ExecuteSQL(Action<SQLiteConnection> action)
         {
-            conn.Open();
-            SQLiteCommand cmd;
-            cmd = conn.CreateCommand();
-            cmd.CommandText = command;
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
-
-        public void CreateTable(SQLiteConnection conn)
-        {
-            ExecuteSQL(conn, 
-                $"CREATE TABLE {table} " +
-                $"(id VARCHAR(12) PRIMARY KEY NOT NULL, show VARCHAR(64), current INTEGER, total INTEGER, rating INTEGER);");
-        }
-
-        public void Insert(SQLiteConnection conn, string index, string show, string current, string total, string rating)
-        {
-            ExecuteSQL(conn, 
-                $"INSERT INTO {table} (id, show, current, total, rating) " +
-                $"VALUES ('{index}', '{show}', {current}, {total}, {rating});");
-        }
-
-        public void Update(SQLiteConnection conn, string index, string show, string current, string total, string rating)
-        {
-            ExecuteSQL(conn, 
-                $"UPDATE {table} " +
-                $"SET id='{index}', show='{show}', current={current}, total={total}, rating={rating} " +
-                $"WHERE id='{index}';");
-        }
-
-        public void Delete(SQLiteConnection conn, string index)
-        {
-            ExecuteSQL(conn,
-                $"DELETE FROM {table} " +
-                $"WHERE id='{index}';");
-        }
-
-        public int GetNumberOfRows(SQLiteConnection conn)
-        {
-            SQLiteDataReader reader;
-            SQLiteCommand cmd;
-            int numberOfRows=0;
-
-            cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT COUNT(id) FROM {table};"; 
-            reader = cmd.ExecuteReader();
-            while(reader.Read())
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
-                numberOfRows =  reader.GetInt32(0);
+                conn.Open();
+                action(conn);
             }
-            
+        }
+
+        public void CreateTable()
+        {
+            ExecuteSQL((conn) =>
+            {
+                using (SQLiteCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {table} " +
+                                      $"(id VARCHAR(12) PRIMARY KEY NOT NULL, show VARCHAR(64), current INTEGER, total INTEGER, rating INTEGER);";
+                    cmd.ExecuteNonQuery();
+                }
+            });
+        }
+
+        public void Insert(string index, string show, string current, string total, string rating)
+        {
+            ExecuteSQL((conn) =>
+            {
+                using (SQLiteCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"INSERT INTO {table} (id, show, current, total, rating) " +
+                                      $"VALUES ('{index}', '{show}', {current}, {total}, {rating});";
+                    cmd.ExecuteNonQuery();
+                }
+            });
+        }
+
+        public void Update(string index, string show, string current, string total, string rating)
+        {
+            ExecuteSQL((conn) =>
+            {
+                using (SQLiteCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"UPDATE {table} " +
+                                      $"SET show='{show}', current={current}, total={total}, rating={rating} " +
+                                      $"WHERE id='{index}';";
+                    cmd.ExecuteNonQuery();
+                }
+            });
+        }
+
+        public void Delete(string index)
+        {
+            ExecuteSQL((conn) =>
+            {
+                using (SQLiteCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"DELETE FROM {table} " +
+                                      $"WHERE id='{index}';";
+                    cmd.ExecuteNonQuery();
+                }
+            });
+        }
+
+        public int GetNumberOfRows()
+        {
+            int numberOfRows = 0;
+            ExecuteSQL((conn) =>
+            {
+                using (SQLiteCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"SELECT COUNT(id) FROM {table};";
+                    numberOfRows = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            });
             return numberOfRows;
         }
 
-        public string[] GetIndexArray(SQLiteConnection conn)
+        public string[] GetIndexArray()
         {
-            SQLiteDataReader reader;
-            SQLiteCommand cmd;
-            int numberOfRows = GetNumberOfRows(conn);
-            string[] indexes = new string[numberOfRows];
-            int count = 0; // to set indexes[count]
+            string[] indexes = new string[0]; // Initialize an empty array
 
-            cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT id FROM {table} ORDER BY id;";
-            try
+            ExecuteSQL((conn) =>
             {
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SQLiteCommand cmd = conn.CreateCommand())
                 {
-                    indexes[count] = reader.GetString(0);
-                    count++;
+                    cmd.CommandText = $"SELECT id FROM {table} ORDER BY id;";
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        System.Collections.Generic.List<string> indexList = new System.Collections.Generic.List<string>();
+                        while (reader.Read())
+                        {
+                            indexList.Add(reader.GetString(0));
+                        }
+                        indexes = indexList.ToArray();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error executing SQL query: {ex.Message}");
-            }
-            conn.Close();
+            });
+
             return indexes;
         }
 
-        public string[] Search(SQLiteConnection conn, string index)
+        public string[] Search(string index)
         {
-            SQLiteDataReader reader;
-            SQLiteCommand cmd;
-            conn.Open();
-            cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {table} WHERE id = '{index}';";
+            string[] column = new string[5]; // Initialize an array to hold result
 
-            string[] column = new string[5];
-
-            reader = cmd.ExecuteReader();
-            while(reader.Read())
+            ExecuteSQL((conn) =>
             {
-                column[0] = reader.GetString(0);
-                column[1] = reader.GetString(1);
-                column[2] = reader.GetInt32(2).ToString();
-                column[3] = reader.GetInt32(3).ToString();
-                column[4] = reader.GetInt32(4).ToString();
-            }
-            conn.Close();
+                using (SQLiteCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"SELECT * FROM {table} WHERE id = '{index}';";
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            column[0] = reader.GetString(0);
+                            column[1] = reader.GetString(1);
+                            column[2] = reader.GetInt32(2).ToString();
+                            column[3] = reader.GetInt32(3).ToString();
+                            column[4] = reader.GetInt32(4).ToString();
+                        }
+                    }
+                }
+            });
+
             return column;
         }
     }
