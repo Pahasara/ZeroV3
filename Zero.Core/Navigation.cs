@@ -1,49 +1,64 @@
-﻿using System.Data.SQLite;
-
-namespace Zero.Core
+﻿namespace Zero.Core
 {
     public class Navigation
     {
-        SQLiteConnection conn = new SQLiteConnection("Data Source = database.db; version = 3; New = True; Compress = True;");
         Database database = new Database();
-        
-        public int currentRow = 0, maxRow = 0;
-        private string  index, show, current, total, rating;
 
-        public Navigation() {
-            try {
+        public int currentRow = 0, maxRow = 0;
+        private string index, show, current, total, rating;
+
+        public Navigation()
+        {
+            try
+            {
                 Fetch();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                conn.Close();
                 InitializeDatabase();
             }
         }
 
         public void InitializeDatabase()
         {
-            database.CreateTable(conn);
+            try
+            {
+                database.CreateTable();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing database: {ex.Message}");
+            }
         }
 
-        public void Navigate(string choice="")
-        {   if (choice == "next")
+        public void Navigate(string choice = "")
+        {
+            if (choice == "next")
             {
-                 NextShow();
+                NextShow();
             }
             else if (choice == "back")
             {
-                 PreviousShow();
+                PreviousShow();
             }
 
-            Fetch(); // Fetch new data columns
+            // If there are shows available, fetch data columns
+            TryFetch();
         }
 
-        private void Fetch(string searchIndex="")
+        private void TryFetch()
         {
-            conn.Open();
-            maxRow = database.GetNumberOfRows(conn);
-            string[] indexes = database.GetIndexArray(conn);
+            if (currentRow >= 0)
+            {
+                Fetch();
+            }
+        }
+
+        private void Fetch(string searchIndex = "")
+        {
+            maxRow = database.GetNumberOfRows();
+            string[] indexes = database.GetIndexArray();
+
             if (searchIndex != "")
             {
                 currentRow = Array.IndexOf(indexes, searchIndex);
@@ -52,33 +67,36 @@ namespace Zero.Core
                     currentRow = 0;
                 }
             }
-            string[] data = database.Search(conn, indexes[currentRow]);
+            else if (currentRow >= maxRow)
+            {
+                currentRow = 0;
+            }
 
-            index = data[0];
-            show = data[1];
-            current = data[2];
-            total = data[3];
-            rating = data[4];
+            if (maxRow > 0)
+            {
+                string[] data = database.Search(indexes[currentRow]);
+                index = data[0];
+                show = data[1];
+                current = data[2];
+                total = data[3];
+                rating = data[4];
+            }
         }
 
-        public int NextShow()
+        public void NextShow()
         {
             if (currentRow < (maxRow - 1))
             {
                 currentRow++;
-                return 0;
             }
-            return -1;
         }
 
-        public int PreviousShow()
+        public void PreviousShow()
         {
             if (currentRow > 0)
             {
                 currentRow--;
-                return 0;
             }
-            return -1;
         }
 
         public int GetMaxRow()
@@ -90,14 +108,14 @@ namespace Zero.Core
         {
             int currentEpisode = Arithmetic.ParseInt(GetCurrent());
             currentEpisode++;
-            database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
+            database.Update(GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
         public void Backward()
         {
             int currentEpisode = Arithmetic.ParseInt(GetCurrent());
             currentEpisode--;
-            database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
+            database.Update(GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
         public void AddShow()
@@ -112,8 +130,8 @@ namespace Zero.Core
             total = data[3];
             rating = data[4];
 
-            database.Insert(conn, GetIndex(), GetShow(), GetCurrent(), GetTotal(), GetRating());
-            newShow.Complete();
+            database.Insert(GetIndex(), GetShow(), GetCurrent(), GetTotal(), GetRating());
+
             currentRow = maxRow;
             maxRow++;
             Navigate("next");
@@ -127,17 +145,17 @@ namespace Zero.Core
         public void ResetProgress()
         {
             int currentEpisode = 0;
-            database.Update(conn, GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
+            database.Update(GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
         public void FinishProgress()
         {
-            database.Update(conn, GetIndex(), GetShow(), GetTotal(), GetTotal(), GetRating());
+            database.Update(GetIndex(), GetShow(), GetTotal(), GetTotal(), GetRating());
         }
 
         public void DeleteShow()
         {
-            database.Delete(conn, GetIndex());
+            database.Delete(GetIndex());
             maxRow--;
             Navigate("back");
         }
@@ -165,6 +183,13 @@ namespace Zero.Core
         public string GetRating()
         {
             return rating;
+        }
+
+        public string GetProgress()
+        {
+            var decProgress = Arithmetic.GetProgress(GetCurrent(), GetTotal());
+            int progress = (int)decProgress;
+            return progress.ToString();
         }
     }
 }
