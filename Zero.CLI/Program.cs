@@ -1,6 +1,5 @@
 ﻿using System.Data.SQLite;
 using Zero.CLI;
-using Zero.Core;
 
 public class Program
 {
@@ -10,20 +9,20 @@ public class Program
 
         try
         {
-            SQLiteConnection conn = new SQLiteConnection("Data Source = database.db; version = 3; New = True; Compress = True;");
+            SQLiteConnection conn = new SQLiteConnection("Data Source=.zero.db; Version=3; New=True; Compress=True;");
             conn.Open();
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error connecting to database: {ex.Message}");
-            Console.WriteLine($"If this keep happening, report this issue on {URL}.");
+            Console.WriteLine($"If this keeps happening, report this issue on {URL}.");
             Console.ReadKey();
+            return;
         }
-        finally
-        {
-            Dashboard dashboard = new Dashboard();
-            dashboard.ShowMenu();
-            dashboard.ShowDashboard();
-        }
+
+        Dashboard dashboard = new Dashboard();
+        dashboard.TryNavigate(); // Check if there are issues with the database
+        dashboard.ShowDashboard(); // Start the dashboard for user interaction
+
     }
 }
