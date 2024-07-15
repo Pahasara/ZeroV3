@@ -15,6 +15,7 @@
             Console.WriteLine("add      Add a new TVShow");
             Console.WriteLine("del      Delete current TVShow");
             Console.WriteLine("reset    Reset current progress");
+            Console.WriteLine("clear    Clear the console");
             Console.WriteLine("----------------------------------------------------");
         }
     }
