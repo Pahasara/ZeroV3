@@ -1,38 +1,30 @@
 # ZERO v3
 
-Welcome to ZERO v3, the next evolution of the Zero TVSM project! Building upon the foundations laid by its predecessors (v1.0 & v2.0), this version aims to completely revamp the Zero TVSM application with Avalonia UI and SQLite.
+Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its predecessors (v1.0 & v2.0), this version is designed to seamlessly run on Linux, Windows, and macOS without a graphical interface, focusing on simplicity and command-line interaction.
 
-Your ideas and contributions are invaluable to the development of this project. Whether you're a seasoned developer or a newcomer, your input can help shape the future of Zero TVSM.
+## Key Features
+- Manage TV show progress through simple commands.
+- Add, delete, and navigate between shows.
+- Reset and finish show progress easily.
+- Enhanced search capabilities.
 
-## Key Features (Under Development)
+## Usability
+- **help**: Display available commands.
+- **n**: Navigate to the next show.
+- **b**: Navigate to the previous show.
+- **++**: Increment current show progress.
+- **--**: Decrement current show progress.
+- **add**: Add a new TV show entry.
+- **del**: Delete the current TV show entry.
+- **reset**: Reset the progress of the current show.
+- **clear**: Clear the console screen.
 
-- **Database Capability**: Introducing SQLite integration to efficiently store show information.
-- **CRUD Operations**: Perform Add/Read/Write/Update/Delete operations on the database table, all powered by C#.
-- **Rating System**: Implement a user-friendly UI for rating shows, enhancing the viewing experience.
-- **Record Navigation**: Seamlessly navigate through records within the application, enhancing usability.
-- **Simple UI**: Utilizing WPF for a clean and intuitive user interface.
+## Downloads
+- **Linux**: [Under development]()
+- **Windows**: [Under development]()
 
-## Planned Enhancements
+## Contributions
+Your contributions are vital to the improvement of this project. Whether you're fixing bugs, enhancing features, or suggesting new ideas, your involvement is highly appreciated!
 
-While the core features are under development, here are some additional functionalities I plan to incorporate into Zero v3:
-
-- **Show Progress Tracking**: Monitor the progress for each show, both on the front-end and back-end.
-- **Dark Theme**: Enhance visual comfort and aesthetics with a sleek dark theme option.
-- **Startup Time Optimization**: Implement optimizations in C# to reduce the application's startup time, ensuring a smoother user experience.
-
-## How to Contribute
-
-Contributions to Zero v3 are highly encouraged! Whether you're interested in fixing bugs, adding new features, or improving documentation, there's a place for you in this project.
-
-1. **Familiarize Yourself**: Get acquainted with the project by exploring the codebase.
-2. **Pick an Issue**: Check out the list of open issues or suggest your own enhancements.
-3. **Submit a Pull Request**: Implement your changes and submit a pull request for review.
-4. **Join the Discussion**: Engage in discussions related to the project.
-
-## Roadmap
-
-Stay updated on the progress of Zero v3 by referring to our roadmap. Here's a glimpse of what's to come:
-
-- **Milestone 01**: Database integration and CRUD operations. (Done)
-- **Milestone 02**: UI enhancements and initial feature rollout. (Done)
-- **Milestone 03**: Finalizing additional features and preparing for release. (For now, I'm just too lazy to connect the functionality and UI elements. So, if any of u willing to do the job, I highly encourage. U can view [Zero](https://github.com/Pahasara/Zero) source code for get an understand of the software, and new source files of ZeroV3 are more readable than them.(Haha, I guess so. Still trying to figure out high quality coding,,,,) If anything unclear, lemme know.
+## Feedback
+Have feedback or feature requests? Feel free to open an issue on GitHub or reach out via discord.
