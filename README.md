@@ -20,8 +20,7 @@ Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its
 - **{**: Reset the progress of the current show.
 - **r**: Delete the current TV show entry.
 - **q**: Exit from the program.
-
-Feel free to incorporate this section into your README file on GitHub.
+  
 ## Downloads
 - **Linux**: [Under development]()
 - **Windows**: [Under development]()
