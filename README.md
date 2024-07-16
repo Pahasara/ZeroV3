@@ -8,7 +8,7 @@ Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its
 - Reset and finish show progress easily.
 - Enhanced search capabilities.
 
-## Usability
+## Usage
 - **[none]**: Refresh the console.
 - **a**: Add a new TV show entry.
 - **s**: Search a TV show.
@@ -24,13 +24,12 @@ Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its
 ## Downloads
 
 ### For Linux (x64)
-[![TAR.XZ](https://img.shields.io/badge/xz-(24.9M)-blue?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.xz)
-[![TAR.GZ](https://img.shields.io/badge/gzip-(34.5M)-purple?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.gz)
+[![TAR.XZ](https://img.shields.io/badge/24.9M-xz-blue?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.xz)
+[![TAR.GZ](https://img.shields.io/badge/34.5M-gzip-purple?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.gz)
 
 ### For Windows (x64)
-[![7Z](https://img.shields.io/badge/7z-(24.7M)-blue?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.7z)
-[![ZIP](https://img.shields.io/badge/zip-(35.2M)-purple?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.zip)
-
+[![7Z](https://img.shields.io/badge/24.7M-7zip-blue?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.7z)
+[![ZIP](https://img.shields.io/badge/35.2M-zip-purple?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.zip)
 
 ## Contributions
 Your contributions are vital to the improvement of this project. Whether you're fixing bugs, enhancing features, or suggesting new ideas, your involvement is highly appreciated!
