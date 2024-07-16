@@ -10,6 +10,7 @@
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("[none]  Refresh console");
             Console.WriteLine("* a     Add a new TVShow");
+            Console.WriteLine("* s     Search TVShow");
             Console.WriteLine("* k     Go to Next TVShow");
             Console.WriteLine("* j     Go to Previous TVShow");
             Console.WriteLine("* ]     Increase progress by 1");
