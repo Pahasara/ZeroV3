@@ -1,15 +1,15 @@
-﻿using System;
-
-namespace Zero.Core
+﻿namespace Zero.Core
 {
     public class NewShow
     {
         private string[] data = new string[5];
         public void ShowMenu()
         {
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("                ADDING A NEW SHOW");
-            Console.WriteLine("----------------------------------------------------");
+            Console.Clear();
+            Console.CursorVisible = true;
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("            ADDING A NEW SHOW");
+            Console.WriteLine("--------------------------------------------");
             Console.WriteLine("Do not enter empty data.");
             Console.WriteLine();
             Console.Write("Index: ");
@@ -17,11 +17,12 @@ namespace Zero.Core
             Console.Write("Show: ");
             data[1] = Console.ReadLine();
             Console.Write("Current: ");
-            data[2]  = Console.ReadLine();
+            data[2] = Console.ReadLine();
             Console.Write("Total: ");
             data[3] = Console.ReadLine();
             // Console.Write("Rating: ");
             data[4] = "0";
+            Console.CursorVisible = false;
         }
         public string[] GetData()
         {
