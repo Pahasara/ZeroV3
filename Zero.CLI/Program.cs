@@ -1,28 +1,32 @@
 ﻿using System.Data.SQLite;
-using Zero.CLI;
 
-public class Program
+namespace Zero.CLI
 {
-    private static void Main(string[] args)
+    public class Program
     {
-        const string URL = "github.com/pahasara/ZeroV3";
-
-        try
+        private static void Main(string[] args)
         {
-            SQLiteConnection conn = new SQLiteConnection("Data Source=.zero.db; Version=3; New=True; Compress=True;");
-            conn.Open();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error connecting to database: {ex.Message}");
-            Console.WriteLine($"If this keeps happening, report this issue on {URL}.");
-            Console.ReadKey();
-            return;
-        }
+            Console.CursorVisible = false;
+            const string URL = "github.com/pahasara/ZeroV3";
 
-        Dashboard dashboard = new Dashboard();
-        dashboard.TryNavigate(); // Check if there are issues with the database
-        dashboard.ShowDashboard(); // Start the dashboard for user interaction
+            try
+            {
+                SQLiteConnection conn = new SQLiteConnection("Data Source=.zero.db; Version=3; New=True; Compress=True;");
+                conn.Open();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error connecting to database: {ex.Message}");
+                Console.WriteLine($"If this keeps happening, report this issue on {URL}.");
+                Console.ReadKey();
+                return;
+            }
 
+            Dashboard dashboard = new Dashboard();
+            dashboard.TryNavigate(); // Check if there are issues with the database
+            dashboard.ShowDashboard(); // Start the dashboard for user interaction
+
+        }
     }
+
 }
