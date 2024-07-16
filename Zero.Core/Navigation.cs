@@ -107,14 +107,21 @@
         public void Forward()
         {
             int currentEpisode = Arithmetic.ParseInt(GetCurrent());
-            currentEpisode++;
+            int total = Arithmetic.ParseInt(GetTotal());
+            if (currentEpisode < total)
+            {
+                currentEpisode++;
+            }
             database.Update(GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
         public void Backward()
         {
             int currentEpisode = Arithmetic.ParseInt(GetCurrent());
-            currentEpisode--;
+            if (currentEpisode > 0)
+            {
+                currentEpisode--;
+            }
             database.Update(GetIndex(), GetShow(), currentEpisode.ToString(), GetTotal(), GetRating());
         }
 
@@ -130,11 +137,18 @@
             total = data[3];
             rating = data[4];
 
-            database.Insert(GetIndex(), GetShow(), GetCurrent(), GetTotal(), GetRating());
+            try
+            {
+                database.Insert(GetIndex(), GetShow(), GetCurrent(), GetTotal(), GetRating());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Please Enter Valid inputs!");
+                Console.ReadKey();
+            }
 
-            currentRow = maxRow;
             maxRow++;
-            Navigate("next");
+            Search(index);
         }
 
         public void Search(string index)
