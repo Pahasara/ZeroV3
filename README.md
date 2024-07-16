@@ -24,12 +24,12 @@ Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its
 ## Downloads
 
 ### For Linux (x64)
-[![TAR.XZ](https://img.shields.io/badge/xz-linux%20x64%20(24.9M)-blue?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.xz)
-[![TAR.GZ](https://img.shields.io/badge/gzip-linux%20x64%20(34.5M)-purple?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.gz)
+[![TAR.XZ](https://img.shields.io/badge/xz-linux%20(24.9M)-blue?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.xz)
+[![TAR.GZ](https://img.shields.io/badge/gzip-linux%20(34.5M)-purple?style=for-the-badge&logo=linux)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/linux_x64.tar.gz)
 
 ### For Windows (x64)
-[![7Z](https://img.shields.io/badge/7z-windows%20x64%20(24.7M)-blue?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.7z)
-[![ZIP](https://img.shields.io/badge/zip-windows%20x64%20(35.2M)-purple?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.zip)
+[![7Z](https://img.shields.io/badge/7z-windows%20(24.7M)-blue?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.7z)
+[![ZIP](https://img.shields.io/badge/zip-windows%20(35.2M)-purple?style=for-the-badge&logo=windows)](https://github.com/Pahasara/ZeroV3/releases/download/v3.0.0/win_x64.zip)
 
 
 ## Contributions
