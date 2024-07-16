@@ -14,14 +14,13 @@ Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its
 - **s**: Search a TV show.
 - **k**: Navigate to the next show.
 - **j**: Navigate to the previous show.
-- **]**: Increment current show progress.
-- **[**: Decrement current show progress.
-- **}**: Finish the progress of the current show.
-- **{**: Reset the progress of the current show.
-- **r**: Delete the current TV show entry.
+- **o**: Increment current show progress.
+- **i**: Decrement current show progress.
+- **O**: Finish the progress of the current show.
+- **I**: Reset the progress of the current show.
+- **R**: Delete the current TV show entry.
 - **q**: Exit from the program.
-
-Feel free to incorporate this section into your README file on GitHub.
+  
 ## Downloads
 - **Linux**: [Under development]()
 - **Windows**: [Under development]()
