@@ -85,7 +85,7 @@ namespace Zero.Core
 
         public string[] GetIndexArray()
         {
-            string[] indexes = new string[0]; // Initialize an empty array
+            var indexes = new List<string>();
 
             ExecuteSQL((conn) =>
             {
@@ -94,17 +94,15 @@ namespace Zero.Core
                     cmd.CommandText = $"SELECT id FROM {table} ORDER BY id;";
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        System.Collections.Generic.List<string> indexList = new System.Collections.Generic.List<string>();
                         while (reader.Read())
                         {
-                            indexList.Add(reader.GetString(0));
+                            indexes.Add(reader.GetString(0));
                         }
-                        indexes = indexList.ToArray();
                     }
                 }
             });
 
-            return indexes;
+            return indexes.ToArray();
         }
 
         public string[] Search(string index)
