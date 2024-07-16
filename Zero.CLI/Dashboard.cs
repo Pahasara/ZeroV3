@@ -5,51 +5,38 @@ namespace Zero.CLI
     public class Dashboard
     {
         Navigation navi = new Navigation();
-        private string choice = "b";
+        private char command = 'b';
+        private bool isEmptyData = false;
 
         public void ShowMenu()
         {
             Console.Clear();
             Console.WriteLine("--------------------------------------------");
-            Console.WriteLine($"            Zero TVSM v{Info.Version}");
+            Console.WriteLine($" [h] help      Zero TVSM v3.0     [q] quit");
             Console.WriteLine("--------------------------------------------");
         }
 
         public void ShowDashboard()
         {
-            while (choice != "exit")
+            while (true)
             {
-                Console.WriteLine();
-                Console.Write("Command: ");
-                choice = Console.ReadLine();
-                CheckChoice(choice);
-            }
-        }
-
-        public void CheckChoice(string choice)
-        {
-            if (string.IsNullOrWhiteSpace(choice))
-            {
-                choice = "exit";
-            }
-            switch (choice.ToLower())
-            {
-                case "add":
+                if (isEmptyData)
+                {
                     navi.AddShow();
-                    break;
-                case "reset":
-                    navi.ResetProgress();
-                    break;
-                case "del":
-                    navi.DeleteShow();
-                    break;
-                case "help":
-                    Help.Dashboard();
-                    break;
-                default:
-                    TryNavigate();
-                    break;
+                    isEmptyData = false;
+                }
+                else
+                {
+                    command = Console.ReadKey().KeyChar;
+                    if (command == 'q')
+                    {
+                        Console.CursorVisible = true;
+                        break;
+                    }
+                }
+                TryNavigate();
             }
+            Console.Clear();
         }
 
         public void TryNavigate()
@@ -61,55 +48,68 @@ namespace Zero.CLI
             }
             else
             {
-                Console.WriteLine("No TVShow has been saved. Please use 'add' command to add new entries.");
+                isEmptyData = true;
+                ShowMenu();
+                Console.WriteLine("No TVShow has been saved.");
+                Console.WriteLine("Press any key to add new entries.");
+                Console.ReadKey();
             }
         }
 
         private void Navigate()
         {
-            switch (choice.ToLower())
+            switch (command)
             {
-                case "n":
+                case 'a':
+                    navi.AddShow();
+                    break;
+                case 'r':
+                    navi.DeleteShow();
+                    break;
+                case 'h':
+                    Help.Dashboard();
+                    break;
+                case 'k':
                     navi.Navigate("next");
                     break;
-                case "b":
+                case 'j':
                     navi.Navigate("back");
                     break;
-                case "clear":
-                    Console.Clear();
-                    break;
-                case "++":
+                case ']':
                     navi.Forward();
                     navi.Navigate();
                     break;
-                case "--":
+                case '[':
                     navi.Backward();
                     navi.Navigate();
                     break;
-                case "r":
+                case '{':
                     navi.ResetProgress();
                     navi.Navigate();
                     break;
-                case "+++":
+                case '}':
                     navi.FinishProgress();
                     navi.Navigate();
                     break;
-                default:
-                    navi.Search(choice);
+                case 's':
+                    Search();
                     break;
             }
-            ShowMenu();
-            ShowData();
-            ShowRowNumber();
+            if (command != 'h')
+            {
+                ShowMenu();
+                ShowData();
+                ShowRowNumber();
+            }
         }
 
         private void ShowData()
         {
-            Console.WriteLine($"Index   : {navi.GetIndex()}");
-            Console.WriteLine($"Show    : {navi.GetShow()}");
-            Console.WriteLine($"Current : {navi.GetCurrent()}");
-            Console.WriteLine($"Total   : {navi.GetTotal()}");
-            Console.WriteLine($"Progress: {navi.GetCurrent()}/ {navi.GetTotal()} ({navi.GetProgress()}%)");
+            Console.WriteLine($"* Index   : {navi.GetIndex()}");
+            Console.WriteLine($"* Show    : {navi.GetShow()}");
+            Console.WriteLine($"* Current : {navi.GetCurrent()}");
+            Console.WriteLine($"* Total   : {navi.GetTotal()}");
+            Console.WriteLine($"* Progress: {navi.GetCurrent()}/ {navi.GetTotal()} ({navi.GetProgress()}%)");
         }
 
         private void ShowRowNumber()
@@ -119,8 +119,22 @@ namespace Zero.CLI
                 currentRow = 1;
             int maxRows = navi.maxRow;
             Console.WriteLine("--------------------------------------------");
-            Console.WriteLine($"                   {currentRow}/ {maxRows}");
+            Console.WriteLine($" [j] back           {currentRow}/ {maxRows}          [k] next");
             Console.WriteLine("--------------------------------------------");
+        }
+
+        private void Search()
+        {
+            Console.CursorVisible = true;
+            Console.Clear();
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("         Zero TVSM - Search");
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine();
+            Console.Write("Index: ");
+            string searchFor = Console.ReadLine();
+            navi.Search(searchFor);
+            Console.CursorVisible = false;
         }
     }
 }
