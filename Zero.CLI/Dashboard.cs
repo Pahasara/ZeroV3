@@ -63,7 +63,7 @@ namespace Zero.CLI
                 case 'a':
                     navi.AddShow();
                     break;
-                case 'r':
+                case 'R':
                     navi.DeleteShow();
                     break;
                 case 'h':
@@ -75,19 +75,19 @@ namespace Zero.CLI
                 case 'j':
                     navi.Navigate("back");
                     break;
-                case ']':
+                case 'o':
                     navi.Forward();
                     navi.Navigate();
                     break;
-                case '[':
+                case 'i':
                     navi.Backward();
                     navi.Navigate();
                     break;
-                case '{':
+                case 'I':
                     navi.ResetProgress();
                     navi.Navigate();
                     break;
-                case '}':
+                case 'O':
                     navi.FinishProgress();
                     navi.Navigate();
                     break;
