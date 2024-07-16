@@ -1,22 +1,24 @@
-﻿namespace Zero.Core
+﻿namespace Zero.CLI
 {
     public class Help
     {
         public static void Dashboard()
         {
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("                  Help: Dashboard");
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("n        Go to Next TVShow");
-            Console.WriteLine("b        Go to Previous TVShow");
-            Console.WriteLine("++       Forward progress");
-            Console.WriteLine("--       Backward progress");
-            Console.WriteLine("+++      Finish progress");
-            Console.WriteLine("add      Add a new TVShow");
-            Console.WriteLine("del      Delete current TVShow");
-            Console.WriteLine("reset    Reset current progress");
-            Console.WriteLine("clear    Clear the console");
-            Console.WriteLine("----------------------------------------------------");
+            Console.Clear();
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("           Zero TVSM - User Guide");
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("[none]  Refresh console");
+            Console.WriteLine("* a     Add a new TVShow");
+            Console.WriteLine("* k     Go to Next TVShow");
+            Console.WriteLine("* j     Go to Previous TVShow");
+            Console.WriteLine("* ]     Increase progress by 1");
+            Console.WriteLine("* [     Decrease progress by 1");
+            Console.WriteLine("* }     Finish progress");
+            Console.WriteLine("* {     Reset current progress");
+            Console.WriteLine("* r     Delete current TVShow");
+            Console.WriteLine("* q     Exit from the program");
+            Console.WriteLine("--------------------------------------------");
         }
     }
 }
