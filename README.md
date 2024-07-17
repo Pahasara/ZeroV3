@@ -35,4 +35,4 @@ Welcome to ZERO v3, the CLI-based evolution of the Zero TVSM project. Unlike its
 Your contributions are vital to the improvement of this project. Whether you're fixing bugs, enhancing features, or suggesting new ideas, your involvement is highly appreciated!
 
 ## Feedback
-Have feedback or feature requests? Feel free to open an issue on GitHub or reach out via discord.
+Have feedback or feature requests? Feel free to open an issue on GitHub or reach out via [discord](https://discord.com/users/1083102293496451108).
