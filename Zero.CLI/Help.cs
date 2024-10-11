@@ -16,7 +16,7 @@
             Console.WriteLine("* o     Increase progress by 1");
             Console.WriteLine("* i     Decrease progress by 1");
             Console.WriteLine("* O     Finish progress");
-            Console.WriteLine("* i     Reset current progress");
+            Console.WriteLine("* I     Reset current progress");
             Console.WriteLine("* R     Delete current TVShow");
             Console.WriteLine("* q     Exit from the program");
             Console.WriteLine("--------------------------------------------");
