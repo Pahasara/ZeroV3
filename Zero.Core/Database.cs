@@ -36,7 +36,7 @@ namespace Zero.Core
                 using (SQLiteCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = $"INSERT INTO {table} (id, show, current, total, rating) " +
-                                      $"VALUES ('{index}', '{show}', {current}, {total}, {rating});";
+                                      $"VALUES ('{index}', \"{show}\", {current}, {total}, {rating});";
                     cmd.ExecuteNonQuery();
                 }
             });
@@ -62,8 +62,7 @@ namespace Zero.Core
             {
                 using (SQLiteCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = $"DELETE FROM {table} " +
-                                      $"WHERE id='{index}';";
+                    cmd.CommandText = $"DELETE FROM {table} " + $"WHERE id='{index}';";
                     cmd.ExecuteNonQuery();
                 }
             });
