@@ -49,7 +49,7 @@ namespace Zero.Core
                 using (SQLiteCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = $"UPDATE {table} " +
-                                      $"SET show='{show}', current={current}, total={total}, rating={rating} " +
+                                      $"SET show=\"{show}\", current={current}, total={total}, rating={rating} " +
                                       $"WHERE id='{index}';";
                     cmd.ExecuteNonQuery();
                 }
